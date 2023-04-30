@@ -21,13 +21,12 @@ void my_dgemv(int n, double* A, double* x, double* y) {
    //    printf("Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
    
    // }
-    #pragma omp parallel 
+    #pragma omp parallel for
   for (int i = 0; i < n; i++) {
       double sum = 0.0;
       for (int j = 0; j < n; j++) {
          sum += A[i * n + j] * x[j];
       }
-   
       y[i] += sum;
 }
 
